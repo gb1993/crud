@@ -5,18 +5,18 @@ if(!isset($_SESSION['user_adm'])){
     header("Location: index.php");
 }
 
-include_once("connectdb.php");
+include_once("../connectdb.php");
 
 $user_input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+if(isset($user_input['status'])){
+    $status = 'administrador';
+} else {
+    $status = 'padrão';
+}
+
 if(!empty($user_input['update'])){
-
-    if(isset($user_input['status'])){
-        $status = 'administrador';
-    } else {
-        $status = 'padrão';
-    }
-
+    
     $find_user = "SELECT * FROM users WHERE login = :login OR email = :email";
     $result_user = $conn -> prepare($find_user);
     $result_user -> bindParam(':login', $user_input['login']);
@@ -35,7 +35,8 @@ if(!empty($user_input['update'])){
             $result_user -> bindParam(':login', $user_input['login']);
             $result_user -> execute();
             $_SESSION['update_user'] = "<div class='alert alert-success' role='alert'>Usuário alterado com sucesso!</div>";
-            header("Location: update_user.php?update=".$row_user['id']."");
+            header("Location: myprofile.php");
+
         } elseif ($row_user['login'] == $user_input['login'] && isset($user_input['pass'])){
             $update_user = "UPDATE users SET status = :status, name = :name, email = :email, telephone = :telephone, pass = :pass WHERE login = :login";
             $result_user = $conn -> prepare($update_user);
@@ -47,10 +48,10 @@ if(!empty($user_input['update'])){
             $result_user -> bindParam(':login', $user_input['login']);
             $result_user -> execute();
             $_SESSION['update_user'] = "<div class='alert alert-success' role='alert'>Usuário alterado com sucesso!</div>";
-            header("Location: update_user.php?update=".$row_user['id']."");
+            header("Location: myprofile.php");
         } else {
             $_SESSION['update_user'] = "<div class='alert alert-danger' role='alert'>Erro ao encontrar usuário</div>";
-            header("Location: update_user.php?update=".$row_user['id']."");
+            header("Location: myprofile.php");
         }
 
     } 

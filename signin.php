@@ -17,11 +17,11 @@ if(!empty($user_input['signin'])){
         if($row_user['status'] == "administrador"){
             $_SESSION['user_adm'] = $row_user['name'];
             $_SESSION['user_adm_id'] = $row_user['id'];
-            header('Location: app_adm.php');
+            header('Location: adm/app.php');
         } else {
             $_SESSION['user'] = $row_user['name'];
             $_SESSION['user_id'] = $row_user['id'];
-            header('Location: app.php');
+            header('Location: user/app.php');
         }
     } else {
         $_SESSION['no_user'] = "<div class='alert alert-danger' role='alert'>Usuário ou senha inválidos</div>";

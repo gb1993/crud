@@ -5,7 +5,7 @@ if(!isset($_SESSION['user'])){
     header("Location: index.php");
 }
 
-include_once("connectdb.php");
+include_once("../connectdb.php");
 
 $user_input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -31,7 +31,7 @@ if(!empty($user_input['update'])){
             $result_user -> bindParam(':login', $user_input['login']);
             $result_user -> execute();
             $_SESSION['update_user'] = "<div class='alert alert-success' role='alert'>Usuário alterado com sucesso!</div>";
-            header("Location: myprofile_user.php?update=".$_SESSION['user_id']."");
+            header("Location: myprofile.php");
         } elseif ($row_user['login'] == $user_input['login'] && isset($user_input['pass'])){
             $update_user = "UPDATE users SET name = :name, email = :email, telephone = :telephone, pass = :pass WHERE login = :login";
             $result_user = $conn -> prepare($update_user);
@@ -42,10 +42,10 @@ if(!empty($user_input['update'])){
             $result_user -> bindParam(':login', $user_input['login']);
             $result_user -> execute();
             $_SESSION['update_user'] = "<div class='alert alert-success' role='alert'>Usuário alterado com sucesso!</div>";
-            header("Location: myprofile_user.php");
+            header("Location: myprofile.php");
         } else {
             $_SESSION['update_user'] = "<div class='alert alert-danger' role='alert'>Erro ao encontrar usuário</div>";
-            header("Location: myprofile_user.php");
+            header("Location: myprofile.php");
         }
 
     } 
