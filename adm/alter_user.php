@@ -5,7 +5,7 @@ if(!isset($_SESSION['user_adm'])){
     header("Location: index.php");
 }
 
-include_once("../connectdb.php");
+require_once("../connectdb.php");
 
 $user_input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

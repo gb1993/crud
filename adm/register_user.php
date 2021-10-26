@@ -4,7 +4,7 @@ if(!isset($_SESSION['user_adm'])){
     $_SESSION['no_user'] = "<div class='alert alert-danger' role='alert'>Necessário estar logado para acessar</div>";
     header("Location: index.php");
 }
-include_once("../connectdb.php");
+require_once("../connectdb.php");
 
 $user_input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

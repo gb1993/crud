@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <body>
 
-<?php include_once("header.php"); ?>
+<?php require_once("header.php"); ?>
 
 <div class="container my-5">
     <a class="text-light" href="signup.php"><button type="button" class="btn btn-primary">Adicionar</button></a>

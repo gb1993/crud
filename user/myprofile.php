@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <body>
-<?php include_once("header.php"); ?>
+<?php require_once("header.php"); ?>
     <div class="container">
         <div class="row my-5">
             <div class="col-md-3 mx-auto my-5">

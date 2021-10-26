@@ -4,7 +4,7 @@
         $_SESSION['no_user'] = "<div class='alert alert-danger' role='alert'>Necessário estar logado para acessar</div>";
         header("Location: index.php");
     }
-    include_once("../connectdb.php");
+    require_once("../connectdb.php");
 ?>
 
 <head>
@@ -35,6 +35,9 @@
                             <li><a class="dropdown-item" href="myprofile.php">Minha Conta</a></li>
                             <li><a class="dropdown-item" href="../signout.php">Sair</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="app.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="crudd_users.php">Usuários</a>

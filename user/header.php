@@ -4,7 +4,7 @@
         $_SESSION['no_user'] = "<div class='alert alert-danger' role='alert'>Necessário estar logado para acessar</div>";
         header("Location: index.php");
     }
-    include_once("../connectdb.php");
+    require_once("../connectdb.php");
 ?>
 <head>
     <meta charset="utf-8"/>
